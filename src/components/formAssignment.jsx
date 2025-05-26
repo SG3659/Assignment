@@ -187,6 +187,7 @@ const FormAssignment = () => {
                 <Box key={field.id} sx={{ display: 'flex', gap: 2, mb: 2 }}>
                   <TextField
                     select
+                    label="Profile"
                     {...register(`profile.${index}.type`)}
                     sx={{ width: '30%' }}
                   >
@@ -200,7 +201,7 @@ const FormAssignment = () => {
                   <TextField
                     {...register(`profile.${index}.value`)}
                     sx={{ flex: 1 }}
-                    placeholder="Enter details"
+                    placeholder="Pofile Url"
                   />
                   {index==0 ? "" :( <IconButton onClick={() => remove(index)} >
                     <DeleteIcon />
