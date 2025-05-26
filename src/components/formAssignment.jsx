@@ -10,7 +10,7 @@ import {
   MenuItem
 } from '@mui/material';
 
-import userTypeOption from '../utils/userTypeoption';
+import userTypeOption from '../utils/userTypeOptions';
 import userRoleOption from '../utils/userRoleOption';
 import DeleteIcon from '@mui/icons-material/Delete';
 
