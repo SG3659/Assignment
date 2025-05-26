@@ -180,7 +180,7 @@ const FormAssignment = () => {
                   <TextField
                     {...register(`profile.${index}.value`)}
                     sx={{ flex: 1 }}
-                    placeholder="Enter contact details"
+                    placeholder="Enter details"
                   />
                   <IconButton onClick={() => remove(index)}>
                     <DeleteIcon />
