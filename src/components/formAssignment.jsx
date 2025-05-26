@@ -9,10 +9,32 @@ import {
   IconButton,
   MenuItem
 } from '@mui/material';
-
+import {z} from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import userTypeOption from '../utils/userTypeOptions';
 import userRoleOption from '../utils/userRoleOption';
 import DeleteIcon from '@mui/icons-material/Delete';
+
+const zodSchema = z.object({
+  firstName: z.string().min(1, 'First name is required'), 
+  lastName: z.string().min(1, 'Last name is required'),
+  email: z.string().email('Invalid email address').min(1, 'Email is required'),   
+  userType: z.object({
+    id: z.string(),
+    label: z.string()
+  }).nullable().refine(value => value !== null, 'User type is required'),
+  role: z.object({
+    id: z.string(),
+    label: z.string()
+  }).nullable().refine(value => value !== null, 'Role is required'),
+  profile: z.array(
+    z.object({
+      type: z.string().min(1, 'Type is required'),
+      value: z.string().min(1, 'Value is required')
+    })
+  ).min(1, 'At least one contact method is required')
+});
+
 
 const FormAssignment = () => {
   const [isUserType, setUserType] = React.useState([]);
@@ -24,10 +46,8 @@ const FormAssignment = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
+    resolver:zodResolver(zodSchema),
     defaultValues:{
-      firstName: '',
-      lastName: '',
-      email: '',
       userType: null,
       role: null,
       profile:[{type:"", value:""}]
