@@ -202,9 +202,10 @@ const FormAssignment = () => {
                     sx={{ flex: 1 }}
                     placeholder="Enter details"
                   />
-                  <IconButton onClick={() => remove(index)}>
+                  {index==0 ? "" :( <IconButton onClick={() => remove(index)} >
                     <DeleteIcon />
-                  </IconButton>
+                  </IconButton>)}
+                 
                 </Box>
               ))}
 
