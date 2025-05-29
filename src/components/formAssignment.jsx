@@ -141,7 +141,6 @@ const FormAssignment = () => {
               <Controller
                 name="userType"
                 control={control}
-                rules={{ required: 'User type is required' }}
                 render={({ field }) => (
                   <Autocomplete
                     {...field}
@@ -163,7 +162,6 @@ const FormAssignment = () => {
               <Controller
                 name="role"
                 control={control}
-                rules={{ required: 'Role is required' }}
                 render={({ field }) => (
                   <Autocomplete
                     {...field}
